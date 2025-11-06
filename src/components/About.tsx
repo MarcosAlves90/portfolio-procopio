@@ -39,8 +39,8 @@ export default function About() {
                     </div>
                 </div>
             </div>
-            <div className="flex max-lg:items-center max-lg:justify-center flex-col lg:grid grid-cols-8 gap-4">
-                <div className="w-full bg-foreground rounded-xl p-4 sm:p-6 space-y-3 col-span-5">
+            <div className="flex max-lg:items-center max-lg:justify-center flex-col lg:grid grid-cols-9 gap-4">
+                <div className="w-full bg-foreground rounded-xl p-4 sm:p-6 space-y-3 col-span-6">
                     <h2 className="font-title text-3xl">Formações</h2>
                     <div className="flex items-center justify-between w-full text-xl max-md:flex-col">
                         <span className="whitespace-nowrap max-md:self-start">ETEC MCM Técnico de T.I para internet</span>
@@ -53,9 +53,9 @@ export default function About() {
                         <span className="whitespace-nowrap max-md:self-start">2024 - 2027 Em andamento</span>
                     </div>
                 </div>
-                <div className="w-full h-full overflow-hidden rounded-xl col-span-3">
+                <div className="w-full h-full overflow-hidden rounded-xl col-span-3 bg-foreground">
                     <img
-                        src="https://res.cloudinary.com/dflvo098t/image/upload/c_crop,x_0,y_75,w_800,h_500/v1762373525/procopio_wp3slo.jpg"
+                        src="https://res.cloudinary.com/dflvo098t/image/upload/v1762461811/adesivos_ljuxek.png"
                         alt="Procópio"
                         className="w-full h-full object-cover"
                     />
