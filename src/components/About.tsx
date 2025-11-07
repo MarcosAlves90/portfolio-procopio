@@ -3,7 +3,7 @@ export default function About() {
         <section
             id="about"
             aria-labelledby="about-heading"
-            className="mx-auto text-primary max-w-400 px-5 my-10 space-y-4"
+            className="mx-auto text-primary max-w-400 px-5 mt-10 space-y-4"
         >
             <div className="flex max-md:items-center max-md:justify-center flex-col md:grid grid-cols-8 gap-4">
                 <div className="w-full bg-foreground rounded-xl p-4 sm:p-6 space-y-3 col-span-6">
