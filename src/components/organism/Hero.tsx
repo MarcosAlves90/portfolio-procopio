@@ -1,4 +1,4 @@
-import Logo from "./Logo";
+import Logo from "../atom/Logo";
 
 export default function Hero() {
   return (
