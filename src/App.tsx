@@ -1,18 +1,16 @@
 import './App.css'
-import About from './components/organism/About'
-import Hero from './components/organism/Hero'
-import Projects from './components/organism/Projects'
-import Strip from './components/molecule/Strip'
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
 
 function App() {
-
   return (
-    <>
-      <Hero />
-      <About />
-      <Strip />
-      <Projects />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<Home scrollTo="about" />} />
+      <Route path="/projects" element={<Home scrollTo="projects" />} />
+      <Route path="/contact" element={<Home scrollTo="contact" />} />
+      <Route path="*" element={<Home />} />
+    </Routes>
   )
 }
 
