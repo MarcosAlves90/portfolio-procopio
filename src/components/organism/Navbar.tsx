@@ -2,6 +2,7 @@ import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '../../contexts/useTheme';
 import Logo from '../atom/Logo';
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     const { effective, toggle } = useTheme();
@@ -114,9 +115,9 @@ export default function Navbar() {
                 <nav>
                     {/* Desktop nav - visible from md and up */}
                     <ul className="hidden md:flex gap-30 font-title text-lg">
-                        <li><a href="#about" className="hover:underline">Sobre</a></li>
-                        <li><a href="#projects" className="hover:underline">Projetos</a></li>
-                        <li><a href="#contact" className="hover:underline">Contato</a></li>
+                        <li><Link to="/about" className="hover:underline">Sobre</Link></li>
+                        <li><Link to="/projects" className="hover:underline">Projetos</Link></li>
+                        <li><Link to="/contact" className="hover:underline">Contato</Link></li>
                     </ul>
                 </nav>
 
@@ -180,32 +181,32 @@ export default function Navbar() {
                             >
                                 <ul className="flex flex-col gap-0 p-2 font-title text-base">
                                     <li>
-                                        <a
-                                            href="#about"
+                                        <Link
+                                            to="/about"
                                             className="block w-full px-4 py-3 rounded hover:bg-primary/5 focus:bg-primary/5 focus:outline-none"
                                             onClick={() => handleMobileToggle(false)}
                                             ref={firstMobileLinkRef}
                                         >
                                             Sobre
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a
-                                            href="#projects"
+                                        <Link
+                                            to="/projects"
                                             className="block w-full px-4 py-3 rounded hover:bg-primary/5 focus:bg-primary/5 focus:outline-none"
                                             onClick={() => handleMobileToggle(false)}
                                         >
                                             Projetos
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a
-                                            href="#contact"
+                                        <Link
+                                            to="/contact"
                                             className="block w-full px-4 py-3 rounded hover:bg-primary/5 focus:bg-primary/5 focus:outline-none"
                                             onClick={() => handleMobileToggle(false)}
                                         >
                                             Contato
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
                                         <button

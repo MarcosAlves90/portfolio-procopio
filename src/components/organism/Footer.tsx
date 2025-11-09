@@ -6,7 +6,7 @@ export default function Footer() {
     // TODO: Melhorar responsividade aumentando o tamanho do grid
 
     return (
-        <footer role="contentinfo" aria-label="Rodapé" className="bg-accent grid grid-cols-6 h-52.5 overflow-y-hidden relative">
+    <footer id="contact" role="contentinfo" aria-label="Rodapé" className="bg-accent grid grid-cols-6 h-52.5 overflow-y-hidden relative">
             <div aria-hidden="true" className="flex items-center overflow-hidden absolute left-0 top-0 bottom-0 max-sm:right-0 h-52.5 pointer-events-none">
                 <Logo className="h-90 w-full sm:w-lg text-accent-tint" ariaLabel="Logo" />
             </div>
