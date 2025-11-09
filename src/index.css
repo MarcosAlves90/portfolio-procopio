@@ -35,6 +35,8 @@
 [data-theme="dark"] {
   --background: #141414;
   --accent: #350000;
+  --accent-tint: #240000;
+  --accent-muted: #9f1313;
   --primary: #ffffff;
   --foreground: #222222;
   
@@ -46,6 +48,8 @@
 [data-theme="light"] {
   --background: #ffd9d9;
   --accent: #b11e1e;
+  --accent-tint: #c32828;
+  --accent-muted: #350000;
   --primary: #000000;
   --foreground: #ffffff;
   
@@ -59,6 +63,8 @@
 
   --color-background: var(--background);
   --color-accent: var(--accent);
+  --color-accent-tint: var(--accent-tint);
+  --color-accent-muted: var(--accent-muted);
   --color-primary: var(--primary);
   --color-foreground: var(--foreground);
 
