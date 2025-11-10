@@ -7,6 +7,7 @@ export interface ProjectItem {
   alt?: string
   title?: string
   description?: string
+  content?: Record<string, string | string[]>
 }
 
 export const projects: ProjectItem[] = [
@@ -16,6 +17,7 @@ export const projects: ProjectItem[] = [
     alt: 'Poster do filme Baby Driver',
     title: 'Poster Em ritmo de fuga',
     description: 'Projeto desenvolvido na disciplina de Introdução à Tipografia. Objetivo: criar um retrato tipográfico do personagem principal do filme Em Ritmo de Fuga (Baby Driver). Construção da imagem utilizando apenas frases, palavras e atributos que representam a persona do personagem. A composição explora o contraste entre cores vibrantes e a silhueta escura. Resultado: peça que une linguagem textual e identidade visual, mostrando a tipografia como forma expressiva.',
+    content: { "Paleta de cores": ["#1D1D1B", "#D93250", "#E0D8A3", "#D7D0BE"], "Foto base": "", "Foto editada": "", "Conteúdo textual": "" }
   },
   {
     id: '2',
