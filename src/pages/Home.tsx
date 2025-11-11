@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import Hero from '../components/organism/Hero'
-import About from '../components/organism/About'
-import Strip from '../components/molecule/Strip'
-import Projects from '../components/organism/Projects'
+import Hero from '@/components/organism/Hero'
+import About from '@/components/organism/About'
+import Strip from '@/components/molecule/Strip'
+import Projects from '@/components/organism/Projects'
 
 type HomeProps = {
   scrollTo?: string

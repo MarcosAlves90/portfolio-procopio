@@ -1,77 +1,9 @@
 import { useMemo } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import projects from '../data/projects'
-
-type DescriptionBlock =
-  | { type: 'paragraph'; text: string }
-  | { type: 'list'; heading: string; items: string[] }
-
-function ProjectDescription({ description }: { description?: string | null }) {
-  if (!description || typeof description !== 'string') return null
-
-  // Split sentences by ., ? or ! followed by whitespace. Keep abbreviations/simple cases intact.
-  const sentences = description
-    .split(/(?<=[.?!])\s+/)
-    .map((s) => s.trim())
-    .filter(Boolean)
-
-  const blocks: DescriptionBlock[] = []
-
-  for (const s of sentences) {
-    if (s.includes('>')) {
-      const parts = s.split('>').map((p) => p.trim()).filter(Boolean)
-
-      if (s.startsWith('>')) {
-        const last = blocks[blocks.length - 1]
-        if (last && last.type === 'list') {
-          last.items.push(...parts)
-        } else {
-          blocks.push({ type: 'list', heading: '', items: parts })
-        }
-      } else {
-        if (parts.length >= 2) {
-          const heading = parts.shift() || ''
-          blocks.push({ type: 'list', heading, items: parts })
-        } else {
-          blocks.push({ type: 'paragraph', text: s })
-        }
-      }
-    } else {
-      blocks.push({ type: 'paragraph', text: s })
-    }
-  }
-
-  return (
-    <>
-      {blocks.map((b, i) => {
-        if (b.type === 'paragraph') {
-          return (
-            <p key={i} className="text-lg sm:text-xl font-light mb-4">
-              {b.text}
-            </p>
-          )
-        }
-
-        return (
-          <div key={i} className="mb-4">
-            {b.heading && (
-              <p className="text-lg sm:text-xl font-light mb-4">{b.heading}</p>
-            )}
-            {b.items.length > 0 && (
-              <ul className="list-disc ml-6 space-y-1">
-                {b.items.map((item, idx) => (
-                  <li key={idx} className="text-lg sm:text-xl font-light">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        )
-      })}
-    </>
-  )
-}
+import projects from '@/data/projects'
+import ProjectDescription from '@/components/molecule/ProjectDescription'
+import ColorPalette from '@/components/molecule/ColorPalette'
+import ProjectHeader from '@/components/organism/ProjectHeader'
 
 export default function ProjectPage() {
   const { id } = useParams<{ id?: string }>()
@@ -92,24 +24,41 @@ export default function ProjectPage() {
 
   const altText = project.alt ?? project.title ?? 'Projeto'
 
+  // Índice e navegação entre projetos (anterior/próximo)
+  const currentIndex = projects.findIndex((p) => p.id === project.id)
+  // Navegação circular: se não houver anterior/próximo, volta para o último/primeiro respectivamente
+  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : projects[projects.length - 1]
+  const nextProject = currentIndex >= 0 && currentIndex < projects.length - 1 ? projects[currentIndex + 1] : projects[0]
+
   return (
-    <main className="max-w-400 mx-auto p-5 mt-16 text-primary">
-      <div className="flex items-start justify-center space-x-5">
+    <main className="max-w-400 mx-auto p-5 mt-16 text-primary space-y-4">
+      <ProjectHeader projectId={project.id} prevProject={prevProject} nextProject={nextProject} />
+
+      <div className="flex items-stretch justify-center max-lg:space-y-4 lg:space-x-4 max-lg:flex-col">
         {typeof project.src === 'string' ? (
-          <img src={project.src} alt={altText} className="w-full h-auto object-contain max-w-180" />
+          <img
+            src={project.src}
+            alt={altText}
+            className="w-full h-auto object-contain lg:max-w-180"
+            loading="lazy"
+            decoding="async"
+          />
         ) : (
-          <div role={project.alt ? 'img' : undefined} aria-label={altText} className="p-6 max-w-180 w-full bg-foreground rounded-xl">
+          <div role="img" aria-label={altText} className="p-6 lg:max-w-180 w-full bg-foreground rounded-xl">
             {project.src}
           </div>
         )}
 
-        <div className="bg-foreground rounded-xl p-4 sm:p-6 space-y-3 col-span-6">
-          <h2 id="about-heading" className="font-title text-2xl sm:text-3xl">
-            {project.title}
-          </h2>
+        <div className='space-y-4 flex items-stretch flex-col'>
+          <div className="bg-foreground rounded-xl p-4 xl:p-6 space-y-3">
+            <h2 id="about-heading" className="font-title text-2xl xl:text-3xl">
+              {project.title}
+            </h2>
 
-          {/* Renderiza a descrição em parágrafos e listas (não altera aparência) */}
-          <ProjectDescription description={project.description ?? undefined} />
+            {/* Renderiza a descrição em parágrafos e listas (não altera aparência) */}
+            <ProjectDescription description={project.description ?? undefined} />
+          </div>
+          <ColorPalette colors={project.content?.palette as string[] | undefined} />
         </div>
       </div>
     </main>

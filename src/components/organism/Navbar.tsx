@@ -1,6 +1,6 @@
 import { Sun, Moon, Menu, X } from 'lucide-react';
-import { useTheme } from '../../contexts/useTheme';
-import Logo from '../atom/Logo';
+import { useTheme } from '@/contexts/useTheme';
+import Logo from '@/components/atom/Logo';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 

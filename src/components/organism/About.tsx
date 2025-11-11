@@ -11,7 +11,7 @@ export default function About() {
                         Quem sou?
                     </h2>
                     <p className="text-lg sm:text-xl font-light">
-                        Olá, sou Procópio, tenho 19 anos e estou em desenvolvimento como designer. Atualmente curso o 4°
+                        Olá, sou Procópio, tenho 20 anos e estou em desenvolvimento como designer. Atualmente curso o 4°
                         semestre do bacharelado em Design, onde venho criando projetos autorais e buscando oportunidades
                         em freelances. No momento, meu foco é ampliar meu portfólio e conquistar uma vaga de estágio em um
                         estúdio de design, para evoluir profissionalmente e viabilizar meus estudos. Como designer, meu
@@ -21,7 +21,7 @@ export default function About() {
                 </div>
                 <figure className="w-full h-full overflow-hidden rounded-xl col-span-2">
                     <img
-                        src="https://res.cloudinary.com/dflvo098t/image/upload/c_crop,x_0,y_75,w_800,h_500/v1762373525/procopio_wp3slo.jpg"
+                        src="https://res.cloudinary.com/dfuzu0ds1/image/upload/c_crop,x_0,y_75,w_800,h_500/Copio_kphmvi.jpg"
                         alt="Retrato de Procópio sorrindo"
                         className="w-full h-full object-cover"
                         loading="lazy"
@@ -34,7 +34,7 @@ export default function About() {
             <div className="flex max-lg:items-center max-lg:justify-center flex-col-reverse lg:grid grid-cols-8 gap-4">
                 <figure className="w-full h-full overflow-hidden rounded-xl col-span-4">
                     <img
-                        src="https://res.cloudinary.com/dflvo098t/image/upload/v1762383773/projects-image_nnxxkj.png"
+                        src="https://res.cloudinary.com/dfuzu0ds1/image/upload/Card_notebook_y0zksg.png"
                         alt="Exemplo de projeto do portfólio"
                         className="w-full h-full object-cover"
                         loading="lazy"
@@ -97,7 +97,7 @@ export default function About() {
 
                 <figure className="w-full h-full overflow-hidden rounded-xl col-span-3 bg-foreground">
                     <img
-                        src="https://res.cloudinary.com/dflvo098t/image/upload/v1762461811/adesivos_ljuxek.png"
+                        src="https://res.cloudinary.com/dfuzu0ds1/image/upload/Card_adesivo_fl7jei.png"
                         alt="Amostra de adesivos e artes"
                         className="w-full h-full object-cover"
                         loading="lazy"

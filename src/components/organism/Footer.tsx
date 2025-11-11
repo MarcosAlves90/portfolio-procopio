@@ -1,4 +1,4 @@
-import Logo from "../atom/Logo";
+import Logo from "@/components/atom/Logo";
 import { Mail, Linkedin, Instagram } from "lucide-react";
 
 export default function Footer() {

@@ -1,7 +1,7 @@
-import './App.css'
+import '@/App.css'
 import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import ProjectPage from './pages/ProjectPage'
+import Home from '@/pages/Home'
+import ProjectPage from '@/pages/ProjectPage'
 
 function App() {
   return (

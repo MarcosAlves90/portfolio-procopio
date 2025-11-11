@@ -1,5 +1,5 @@
-import MasonryGallery from '../molecule/MasonryGallery'
-import projects from '../../data/projects.tsx'
+import MasonryGallery from '@/components/molecule/MasonryGallery'
+import projects from '@/data/projects.tsx'
 
 export default function Projects() {
     return (
