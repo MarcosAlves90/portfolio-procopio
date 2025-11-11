@@ -3,7 +3,7 @@ import { buildCloudinaryUrl } from '@/utils/cloudinary'
 export default function About() {
     return (
         <section
-            id="about"
+            id="sobre"
             aria-labelledby="about-heading"
             className="mx-auto text-primary max-w-400 px-5 mt-10 space-y-4"
         >

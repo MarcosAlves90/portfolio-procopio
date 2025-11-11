@@ -1,0 +1,41 @@
+.strip-expand {
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+    margin-right: -2rem;
+}
+
+.strip-tilt {
+    transform: rotate(1.5deg);
+    transform-origin: left center;
+    overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+    .strip-tilt {
+        transform: rotate(2.5deg);
+    }
+}
+
+.strip-track {
+    animation: marquee var(--marquee-duration, 14s) linear infinite;
+    will-change: transform;
+}
+
+@keyframes marquee {
+    0% { 
+        transform: translateX(0); 
+    }
+    100% { 
+        transform: translateX(calc(-1 * var(--marquee-distance, 0px))); 
+    }
+}
+
+.strip-viewport:focus {
+    outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .strip-track {
+        animation: none !important;
+    }
+}

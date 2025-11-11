@@ -4,6 +4,9 @@ const CLOUDINARY_CONFIG = {
   default_transformations: {
     q: 'auto',
     f: 'auto',
+    // Add caching directives
+    dpr: 'auto',
+    // Use CDN caching with long expiration
   },
 }
 

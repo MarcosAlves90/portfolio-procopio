@@ -15,15 +15,22 @@ interface MasonryGalleryProps {
 export default function MasonryGallery({ images }: MasonryGalleryProps) {
     // Render images in the order received by the `images` prop.
     return (
-        <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-4">
+        <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-4" style={{ contain: 'layout style paint' }}>
             {images.map((image) => (
-                <div key={image.id} className="break-inside-avoid mb-3">
+                <div key={image.id} className="break-inside-avoid mb-3" style={{ contain: 'content' }}>
                     <Link
                         to={`/projetos/${image.id}`}
-                        className="block relative overflow-hidden hover:opacity-80 transition-opacity duration-300 cursor-pointer bg-foreground-tint focus:outline-none focus:ring"
+                        className="block relative overflow-hidden hover:opacity-80 transition-opacity duration-200 cursor-pointer bg-foreground-tint focus:outline-none focus:ring"
                         aria-label={image.alt ? `Abrir projeto: ${image.alt}` : `Abrir projeto ${image.id}`}>
                         {typeof image.src === 'string' ? (
-                            <img src={image.src} alt={image.alt} className="w-full h-auto object-cover" loading="lazy" />
+                            <img 
+                              src={image.src} 
+                              alt={image.alt} 
+                              className="w-full h-auto object-cover" 
+                              loading="lazy" 
+                              decoding="async"
+                              fetchPriority="low"
+                            />
                         ) : (
                             // render React node (SVG/component). Provide aria-label if alt is present.
                             <div className="w-full h-auto p-4" aria-label={image.alt} role={image.alt ? 'img' : undefined}>

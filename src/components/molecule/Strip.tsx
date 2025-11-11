@@ -1,12 +1,11 @@
-import { useLayoutEffect, useRef, useState, useMemo, useCallback } from "react";
+import { useLayoutEffect, useRef, useState, useMemo, useCallback, memo } from "react";
+import "./Strip.css";
 
 const BASE_ITEMS = ["Designer", "Freelancer"] as const;
 const ANIMATION_SPEED_PX_PER_SEC = 80;
 const MIN_ANIMATION_DURATION = 6;
 const DURATION_CHANGE_THRESHOLD = 0.05;
 const DISTANCE_CHANGE_THRESHOLD = 1;
-const STRIP_ROTATION_DEG = 1.5;
-const STRIP_ROTATION_DEG_MOBILE = 2.5;
 const STRIP_VERTICAL_PADDING = "py-3.5";
 const ITEM_HORIZONTAL_PADDING = "px-5.5";
 const ITEM_TEXT_SIZE = "text-lg";
@@ -21,6 +20,23 @@ interface MarqueeStyleProps extends React.CSSProperties {
     '--marquee-duration': string;
     '--marquee-distance': string;
 }
+
+interface StripItemProps {
+    text: string;
+    keyPrefix: string;
+    index: number;
+}
+
+const StripItem = memo(({ text, keyPrefix, index }: StripItemProps) => (
+    <span
+        key={`${keyPrefix}-${index}`}
+        className={`strip-item inline-block text-primary ${ITEM_TEXT_SIZE} ${ITEM_HORIZONTAL_PADDING} whitespace-nowrap`}
+    >
+        {text}
+    </span>
+));
+
+StripItem.displayName = 'StripItem';
 
 export default function Strip() {
     const wrapperRef = useRef<HTMLDivElement | null>(null);
@@ -122,15 +138,6 @@ export default function Strip() {
         '--marquee-distance': `${config.distance}px`
     };
 
-    const renderStripItem = (text: string, keyPrefix: string, index: number) => (
-        <span
-            key={`${keyPrefix}-${index}`}
-            className={`strip-item inline-block text-primary ${ITEM_TEXT_SIZE} ${ITEM_HORIZONTAL_PADDING} whitespace-nowrap`}
-        >
-            {text}
-        </span>
-    );
-
     return (
         <div
             ref={wrapperRef}
@@ -151,7 +158,7 @@ export default function Strip() {
                 aria-hidden="true"
             >
                 <div ref={measureRef} className="strip-group flex items-center">
-                    {BASE_ITEMS.map((text, i) => renderStripItem(text, "m", i))}
+                    {BASE_ITEMS.map((text, i) => <StripItem key={`m-${i}`} text={text} keyPrefix="m" index={i} />)}
                 </div>
             </div>
 
@@ -168,53 +175,13 @@ export default function Strip() {
                     style={trackStyle}
                 >
                     <div className="strip-inner flex items-center" aria-hidden="true">
-                        {repeatedItems.map((text, i) => renderStripItem(text, "r1", i))}
+                        {repeatedItems.map((text, i) => <StripItem key={`r1-${i}`} text={text} keyPrefix="r1" index={i} />)}
                     </div>
                     <div className="strip-inner flex items-center" aria-hidden="true">
-                        {repeatedItems.map((text, i) => renderStripItem(text, "r2", i))}
+                        {repeatedItems.map((text, i) => <StripItem key={`r2-${i}`} text={text} keyPrefix="r2" index={i} />)}
                     </div>
                 </div>
             </div>
-
-            <style>{`
-                .strip-expand {
-                    width: calc(100% + 4rem);
-                    margin-left: -2rem;
-                    margin-right: -2rem;
-                }
-
-                .strip-tilt {
-                    transform: rotate(${STRIP_ROTATION_DEG}deg);
-                    transform-origin: left center;
-                    overflow: hidden;
-                }
-
-                @media (max-width: 1024px) {
-                    .strip-tilt {
-                        transform: rotate(${STRIP_ROTATION_DEG_MOBILE}deg);
-                    }
-                }
-
-                .strip-track {
-                    animation: marquee var(--marquee-duration, 14s) linear infinite;
-                    will-change: transform;
-                }
-
-                @keyframes marquee {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(calc(-1 * var(--marquee-distance, 0px))); }
-                }
-
-                .strip-viewport:focus {
-                    outline: none;
-                }
-
-                @media (prefers-reduced-motion: reduce) {
-                    .strip-track {
-                        animation: none !important;
-                    }
-                }
-            `}</style>
             </div>
         </div>
     );

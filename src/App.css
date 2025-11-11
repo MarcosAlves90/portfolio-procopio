@@ -1,0 +1,23 @@
+/* Performance optimizations */
+section {
+  contain: layout style paint;
+}
+
+/* Optimized link hover state - use transform for smooth animation */
+a {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reduce motion for users with accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
