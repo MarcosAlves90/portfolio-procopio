@@ -50,7 +50,7 @@ export default function ProjectDescription({ description }: { description?: stri
       {blocks.map((b, i) => {
         if (b.type === 'paragraph') {
           return (
-            <p key={`p-${i}`} className="text-lg sm:text-xl font-light mb-4 last:mb-0">
+            <p key={`p-${i}`} className="text-lg xl:text-xl font-light mb-4 last:mb-0">
               {b.text}
             </p>
           )
@@ -59,12 +59,12 @@ export default function ProjectDescription({ description }: { description?: stri
         return (
           <div key={`l-${i}`} className="mb-4">
             {b.heading && (
-              <p className="text-lg sm:text-xl font-light mb-4">{b.heading}</p>
+              <p className="text-lg xl:text-xl font-light mb-4">{b.heading}</p>
             )}
             {b.items.length > 0 && (
               <ul className="list-disc ml-6 space-y-1">
                 {b.items.map((item, idx) => (
-                  <li key={idx} className="text-lg sm:text-xl font-light">
+                  <li key={idx} className="text-lg xl:text-xl font-light">
                     {item}
                   </li>
                 ))}
