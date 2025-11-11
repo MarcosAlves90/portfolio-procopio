@@ -28,7 +28,7 @@ function ThemeToggle({
       aria-label="Alternar tema"
       title="Alternar tema"
       aria-pressed={effective === "dark"}
-      className="p-1 rounded focus:outline-none focus:ring-2 focus:ring-primary/10 cursor-pointer"
+      className="p-1 px-3 py-3 rounded hover:bg-primary/5 focus:bg-primary/5 cursor-pointer"
     >
       {effective === "dark" ? (
         <Sun className="w-6 h-6" aria-hidden="true" />
@@ -207,7 +207,7 @@ export default function Navbar() {
           <Link
             to="/"
             onClick={scrollToTop}
-            className="w-15 focus:outline-none focus:ring-2 focus:ring-primary/10 rounded"
+            className="w-15"
             aria-label="Voltar ao topo"
           >
             <Logo className="w-full text-primary" ariaLabel="Logo" />
@@ -217,7 +217,7 @@ export default function Navbar() {
             <ul className="flex gap-30 font-title text-lg">
               {NAV_LINKS.map((link) => (
                 <li key={link.id}>
-                  <Link to={link.href} className="hover:underline">
+                  <Link to={link.href} className="px-4 py-2 rounded hover:bg-primary/5 focus:bg-primary/5">
                     {link.label}
                   </Link>
                 </li>
