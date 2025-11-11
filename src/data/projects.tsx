@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import LogoMl from '@/components/atom/LogoMl'
+import { buildCloudinaryUrl } from '@/utils/cloudinary'
 
 export interface ProjectItem {
   id: string
@@ -13,7 +14,7 @@ export interface ProjectItem {
 export const projects: ProjectItem[] = [
   {
     id: '1',
-    src: 'https://res.cloudinary.com/dfuzu0ds1/image/upload/Poster_retrato-Final_mcjdza.jpg',
+    src: buildCloudinaryUrl('Poster_retrato-Final_mcjdza.jpg'),
     alt: 'Pôster do filme Baby Driver',
     title: 'Pôster Em Ritmo de Fuga',
     description: 'Projeto desenvolvido na disciplina de Introdução à Tipografia. Objetivo: criar um retrato tipográfico do personagem principal do filme Em Ritmo de Fuga (Baby Driver). Construção da imagem utilizando apenas frases, palavras e atributos que representam a persona do personagem. A composição explora o contraste entre cores vibrantes e a silhueta escura. Resultado: peça que une linguagem textual e identidade visual, mostrando a tipografia como forma expressiva.',
@@ -28,7 +29,7 @@ export const projects: ProjectItem[] = [
   },
   {
     id: '3',
-    src: 'https://res.cloudinary.com/dfuzu0ds1/image/upload/Poster_Porsche_Final_r4l5wc.jpg',
+    src: buildCloudinaryUrl('Poster_Porsche_Final_r4l5wc.jpg'),
     alt: 'Pôster do carro Porsche 911 GT3',
     title: 'Pôster Porsche 911 GT3',
     description: 'Peça gráfica inspirada no modelo Porsche 911 GT3. A imagem do veículo foi capturada no jogo Forza Horizon 5. Todas informações utilizadas foram baseadas no site oficial da Porsche, garantindo autenticidade. A composição destaca o caráter esportivo do modelo por meio de: > Paleta de cores quase monocromática. > Equilíbrio visual. > Clareza informativa. Resultado: pôster que une simplicidade estética e valorização dos atributos do veículo.',
@@ -36,7 +37,7 @@ export const projects: ProjectItem[] = [
   },
   {
     id: '4',
-    src: 'https://res.cloudinary.com/dfuzu0ds1/image/upload/Hazard-t5-1_p1ozw2.png',
+    src: buildCloudinaryUrl('Hazard-t5-1_p1ozw2.png'),
     alt: 'Pôster do RPG Hazard: Mundo Titânico',
     title: 'Pôster Hazard Mundo Titânico',
     description: 'Pôster desenvolvido em parceria com o artista Itzo responsável pela ilustração do personagem Hazard. Projeto criado para divulgar o RPG Mundo Titânico, ainda em produção. A composição explora: > Uso expressivo da tipografia. > Forte contraste de cores para destaque visual. > Aplicação de texturas para dar identidade e diferenciação. Resultado: peça promocional que valoriza o personagem principal e fortalece a divulgação do universo do RPG.',
