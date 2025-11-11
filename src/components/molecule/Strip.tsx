@@ -205,12 +205,6 @@ export default function Strip() {
                     100% { transform: translateX(calc(-1 * var(--marquee-distance, 0px))); }
                 }
 
-                .strip-viewport:hover .strip-track,
-                .strip-viewport:focus .strip-track,
-                .strip-viewport:focus-visible .strip-track {
-                    animation-play-state: paused;
-                }
-
                 .strip-viewport:focus {
                     outline: none;
                 }

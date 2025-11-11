@@ -36,7 +36,7 @@ export default function ProjectPage() {
   const nextProject = currentIndex >= 0 && currentIndex < projects.length - 1 ? projects[currentIndex + 1] : projects[0]
 
   return (
-    <main className="max-w-400 mx-auto p-5 mt-16 text-primary space-y-4">
+    <main className="max-w-400 min-h-[calc(100vh-4rem)] mx-auto p-5 mt-16 text-primary space-y-4">
       <ProjectHeader projectId={project.id} prevProject={prevProject} nextProject={nextProject} />
 
       <div className="flex items-stretch justify-center max-lg:space-y-4 lg:space-x-4 max-lg:flex-col">
