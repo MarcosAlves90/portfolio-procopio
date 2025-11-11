@@ -4,6 +4,7 @@ import projects from '@/data/projects'
 import ProjectDescription from '@/components/molecule/ProjectDescription'
 import ColorPalette from '@/components/molecule/ColorPalette'
 import ProjectHeader from '@/components/organism/ProjectHeader'
+import CachedImage from '@/components/atom/CachedImage'
 
 export default function ProjectPage() {
   const { id } = useParams<{ id?: string }>()
@@ -41,12 +42,10 @@ export default function ProjectPage() {
 
       <div className="flex items-stretch justify-center max-lg:space-y-4 lg:space-x-4 max-lg:flex-col">
         {typeof project.src === 'string' ? (
-          <img
+          <CachedImage
             src={project.src}
             alt={altText}
             className="w-full h-auto object-contain lg:max-w-180"
-            loading="lazy"
-            decoding="async"
           />
         ) : (
           <div role="img" aria-label={altText} className="p-6 lg:max-w-180 w-full bg-foreground rounded-xl">

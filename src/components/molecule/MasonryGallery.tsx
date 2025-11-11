@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import CachedImage from '@/components/atom/CachedImage';
 
 interface MasonryImage {
     id: string;
@@ -23,12 +24,10 @@ export default function MasonryGallery({ images }: MasonryGalleryProps) {
                         className="block relative overflow-hidden hover:opacity-80 transition-opacity duration-200 cursor-pointer bg-foreground-tint focus:outline-none focus:ring"
                         aria-label={image.alt ? `Abrir projeto: ${image.alt}` : `Abrir projeto ${image.id}`}>
                         {typeof image.src === 'string' ? (
-                            <img 
+                            <CachedImage 
                               src={image.src} 
-                              alt={image.alt} 
-                              className="w-full h-auto object-cover" 
-                              loading="lazy" 
-                              decoding="async"
+                              alt={image.alt || ''} 
+                              className="w-full h-auto object-cover"
                               fetchPriority="low"
                             />
                         ) : (

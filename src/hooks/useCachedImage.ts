@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { fetchImageWithCache } from '@/utils/imageCache';
 
 interface UseCachedImageResult {
@@ -10,11 +10,13 @@ interface UseCachedImageResult {
 /**
  * Hook to fetch and cache images from Cloudinary
  * Returns a blob URL that can be used directly in img src
+ * Properly manages Object URLs to prevent memory leaks
  */
 export function useCachedImage(imageUrl: string): UseCachedImageResult {
   const [blobUrl, setBlobUrl] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
+  const objectUrlRef = useRef<string | null>(null);
 
   useEffect(() => {
     if (!imageUrl) {
@@ -35,7 +37,14 @@ export function useCachedImage(imageUrl: string): UseCachedImageResult {
           const blob = await fetchImageWithCache(imageUrl);
 
           if (isMounted) {
+            // Revoke old Object URL to prevent memory leaks
+            if (objectUrlRef.current) {
+              URL.revokeObjectURL(objectUrlRef.current);
+            }
+
+            // Create new Object URL from cached blob
             const url = URL.createObjectURL(blob);
+            objectUrlRef.current = url;
             setBlobUrl(url);
           }
         }
@@ -55,6 +64,11 @@ export function useCachedImage(imageUrl: string): UseCachedImageResult {
     return () => {
       isMounted = false;
       abortController.abort();
+      // Cleanup: revoke Object URL when component unmounts
+      if (objectUrlRef.current) {
+        URL.revokeObjectURL(objectUrlRef.current);
+        objectUrlRef.current = null;
+      }
     };
   }, [imageUrl]);
 

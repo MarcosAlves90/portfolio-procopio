@@ -1,4 +1,5 @@
 import { buildCloudinaryUrl } from '@/utils/cloudinary'
+import CachedImage from '@/components/atom/CachedImage'
 
 export default function About() {
     return (
@@ -22,12 +23,10 @@ export default function About() {
                     </p>
                 </div>
                 <figure className="w-full h-full overflow-hidden rounded-xl col-span-2">
-                    <img
+                    <CachedImage
                         src={buildCloudinaryUrl('Copio_kphmvi.jpg', { c: 'crop', x: '0', y: '75', w: '800', h: '500' })}
                         alt="Retrato de Procópio sorrindo"
                         className="w-full h-full object-cover"
-                        loading="lazy"
-                        decoding="async"
                     />
                     <figcaption className="sr-only">Foto de Procópio</figcaption>
                 </figure>
@@ -35,12 +34,10 @@ export default function About() {
 
             <div className="flex max-lg:items-center max-lg:justify-center flex-col-reverse lg:grid grid-cols-8 gap-4">
                 <figure className="w-full h-full overflow-hidden rounded-xl col-span-4">
-                    <img
+                    <CachedImage
                         src={buildCloudinaryUrl('Card_notebook_y0zksg.png')}
                         alt="Exemplo de projeto do portfólio"
                         className="w-full h-full object-cover"
-                        loading="lazy"
-                        decoding="async"
                     />
                     <figcaption className="sr-only">Imagem ilustrativa de projetos</figcaption>
                 </figure>
@@ -98,12 +95,10 @@ export default function About() {
                 </div>
 
                 <figure className="w-full h-full overflow-hidden rounded-xl col-span-3 bg-foreground">
-                    <img
+                    <CachedImage
                         src={buildCloudinaryUrl('Card_adesivo_fl7jei.png')}
                         alt="Amostra de adesivos e artes"
                         className="w-full h-full object-cover"
-                        loading="lazy"
-                        decoding="async"
                     />
                     <figcaption className="sr-only">Amostra de adesivos criados</figcaption>
                 </figure>
