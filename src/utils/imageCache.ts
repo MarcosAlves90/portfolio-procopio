@@ -3,9 +3,9 @@
  * Manages caching of images using IndexedDB with cache-first strategy
  */
 
-const DB_NAME = 'portfolio-cache';
+const DB_NAME = "portfolio-cache";
 const DB_VERSION = 1;
-const STORE_NAME = 'images';
+const STORE_NAME = "images";
 const CACHE_EXPIRY_DAYS = 30;
 
 interface CachedImage {
@@ -36,7 +36,7 @@ class ImageCacheManager {
       request.onupgradeneeded = (event) => {
         const db = (event.target as IDBOpenDBRequest).result;
         if (!db.objectStoreNames.contains(STORE_NAME)) {
-          db.createObjectStore(STORE_NAME, { keyPath: 'url' });
+          db.createObjectStore(STORE_NAME, { keyPath: "url" });
         }
       };
     });
@@ -51,7 +51,7 @@ class ImageCacheManager {
     if (!this.db) return null;
 
     return new Promise((resolve, reject) => {
-      const transaction = this.db!.transaction([STORE_NAME], 'readonly');
+      const transaction = this.db!.transaction([STORE_NAME], "readonly");
       const store = transaction.objectStore(STORE_NAME);
       const request = store.get(url);
 
@@ -84,7 +84,7 @@ class ImageCacheManager {
     };
 
     return new Promise((resolve, reject) => {
-      const transaction = this.db!.transaction([STORE_NAME], 'readwrite');
+      const transaction = this.db!.transaction([STORE_NAME], "readwrite");
       const store = transaction.objectStore(STORE_NAME);
       const request = store.put(cachedImage);
 
@@ -98,7 +98,7 @@ class ImageCacheManager {
     if (!this.db) return;
 
     return new Promise((resolve, reject) => {
-      const transaction = this.db!.transaction([STORE_NAME], 'readwrite');
+      const transaction = this.db!.transaction([STORE_NAME], "readwrite");
       const store = transaction.objectStore(STORE_NAME);
       const request = store.delete(url);
 
@@ -112,7 +112,7 @@ class ImageCacheManager {
     if (!this.db) return;
 
     return new Promise((resolve, reject) => {
-      const transaction = this.db!.transaction([STORE_NAME], 'readwrite');
+      const transaction = this.db!.transaction([STORE_NAME], "readwrite");
       const store = transaction.objectStore(STORE_NAME);
       const request = store.clear();
 

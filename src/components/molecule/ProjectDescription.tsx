@@ -1,59 +1,69 @@
-import { useMemo } from 'react'
+import { useMemo } from "react";
 
 type DescriptionBlock =
-  | { type: 'paragraph'; text: string }
-  | { type: 'list'; heading: string; items: string[] }
+  | { type: "paragraph"; text: string }
+  | { type: "list"; heading: string; items: string[] };
 
-export default function ProjectDescription({ description }: { description?: string | null }) {
+export default function ProjectDescription({
+  description,
+}: {
+  description?: string | null;
+}) {
   // Memoize parsing para manter hooks na mesma ordem
   const blocks = useMemo((): DescriptionBlock[] => {
-    if (!description || typeof description !== 'string') return []
+    if (!description || typeof description !== "string") return [];
 
     const sentences = description
       .split(/(?<=[.?!])\s+/)
       .map((s) => s.trim())
-      .filter(Boolean)
+      .filter(Boolean);
 
-    const result: DescriptionBlock[] = []
+    const result: DescriptionBlock[] = [];
 
     for (const s of sentences) {
-      if (s.includes('>')) {
-        const parts = s.split('>').map((p) => p.trim()).filter(Boolean)
+      if (s.includes(">")) {
+        const parts = s
+          .split(">")
+          .map((p) => p.trim())
+          .filter(Boolean);
 
-        if (s.startsWith('>')) {
-          const last = result[result.length - 1]
-          if (last && last.type === 'list') {
-            last.items.push(...parts)
+        if (s.startsWith(">")) {
+          const last = result[result.length - 1];
+          if (last && last.type === "list") {
+            last.items.push(...parts);
           } else {
-            result.push({ type: 'list', heading: '', items: parts })
+            result.push({ type: "list", heading: "", items: parts });
           }
         } else {
           if (parts.length >= 2) {
-            const heading = parts.shift() || ''
-            result.push({ type: 'list', heading, items: parts })
+            const heading = parts.shift() || "";
+            result.push({ type: "list", heading, items: parts });
           } else {
-            result.push({ type: 'paragraph', text: s })
+            result.push({ type: "paragraph", text: s });
           }
         }
       } else {
-        result.push({ type: 'paragraph', text: s })
+        result.push({ type: "paragraph", text: s });
       }
     }
 
-    return result
-  }, [description])
+    return result;
+  }, [description]);
 
-  if (blocks.length === 0) return null
+  if (blocks.length === 0) return null;
 
   return (
     <>
       {blocks.map((b, i) => {
-        if (b.type === 'paragraph') {
+        if (b.type === "paragraph") {
           return (
-            <p key={`p-${i}`} className="text-lg xl:text-xl font-light mb-4 last:mb-0">
+            <p
+              key={`p-${i}`}
+              className="text-lg xl:text-xl font-light mb-4 last:mb-0"
+            >
               {b.text}
             </p>
-          )
+          );
         }
 
         return (
@@ -71,8 +81,8 @@ export default function ProjectDescription({ description }: { description?: stri
               </ul>
             )}
           </div>
-        )
+        );
       })}
     </>
-  )
+  );
 }

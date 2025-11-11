@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from 'react';
-import { fetchImageWithCache } from '@/utils/imageCache';
+import { useEffect, useState, useRef } from "react";
+import { fetchImageWithCache } from "@/utils/imageCache";
 
 interface UseCachedImageResult {
   blobUrl: string | null;
@@ -33,7 +33,7 @@ export function useCachedImage(imageUrl: string): UseCachedImageResult {
         setError(null);
 
         // For string URLs (already built Cloudinary URLs), use cache
-        if (typeof imageUrl === 'string') {
+        if (typeof imageUrl === "string") {
           const blob = await fetchImageWithCache(imageUrl);
 
           if (isMounted) {
@@ -50,7 +50,9 @@ export function useCachedImage(imageUrl: string): UseCachedImageResult {
         }
       } catch (err) {
         if (isMounted && !abortController.signal.aborted) {
-          setError(err instanceof Error ? err : new Error('Failed to load image'));
+          setError(
+            err instanceof Error ? err : new Error("Failed to load image"),
+          );
           // Fallback to original URL on error
           setBlobUrl(imageUrl);
         }

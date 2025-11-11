@@ -1,8 +1,8 @@
-import '@/App.css'
-import { Routes, Route } from 'react-router-dom'
-import Home from '@/pages/Home'
-import ProjectPage from '@/pages/ProjectPage'
-import HashNavigator from '@/components/HashNavigator'
+import "@/App.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "@/pages/Home";
+import ProjectPage from "@/pages/ProjectPage";
+import HashNavigator from "@/components/HashNavigator";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path="*" element={<Home />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

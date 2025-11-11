@@ -2,8 +2,8 @@
 
 /* Import da fonte Obvia Medium localizada em src/assets/obvia-medium.otf */
 @font-face {
-  font-family: 'Obvia';
-  src: url('./assets/obvia-medium.otf') format('opentype');
+  font-family: "Obvia";
+  src: url("./assets/obvia-medium.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -11,8 +11,8 @@
 
 /* Import da fonte Forma DJR Micro localizada em src/assets/forma-djr-micro.otf */
 @font-face {
-  font-family: 'FormaDJRMicro';
-  src: url('./assets/forma-djr-micro.otf') format('opentype');
+  font-family: "FormaDJRMicro";
+  src: url("./assets/forma-djr-micro.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -27,8 +27,8 @@
 
   background-color: var(--background);
 
-  --obvia: 'Obvia', sans-serif;
-  --forma-djr: 'FormaDJRMicro', sans-serif;
+  --obvia: "Obvia", sans-serif;
+  --forma-djr: "FormaDJRMicro", sans-serif;
 
   font-family: var(--forma-djr);
 }
@@ -40,7 +40,7 @@
   --accent-muted: #9f1313;
   --primary: #ffffff;
   --foreground: #222222;
-  
+
   /* variáveis relacionadas a projetos */
   --foreground-tint: #2e2e2e;
   --logo-color: #b5b5b5;
@@ -53,7 +53,7 @@
   --accent-muted: #350000;
   --primary: #000000;
   --foreground: #ffffff;
-  
+
   /* variáveis relacionadas a projetos */
   --foreground-tint: #d0d0d0;
   --logo-color: #2e2e2e;
@@ -76,5 +76,4 @@
   /* tipografia */
   --font-title: var(--obvia);
   --font-body: var(--forma-djr);
-  
 }

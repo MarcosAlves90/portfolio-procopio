@@ -1,5 +1,5 @@
-import type { ImgHTMLAttributes } from 'react';
-import { useCachedImage } from '@/hooks/useCachedImage';
+import type { ImgHTMLAttributes } from "react";
+import { useCachedImage } from "@/hooks/useCachedImage";
 
 interface CachedImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -13,8 +13,8 @@ interface CachedImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 export default function CachedImage({
   src,
   alt,
-  loading = 'lazy',
-  decoding = 'async',
+  loading = "lazy",
+  decoding = "async",
   ...props
 }: CachedImageProps) {
   const { blobUrl, error } = useCachedImage(src);
