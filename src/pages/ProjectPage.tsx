@@ -10,7 +10,7 @@ export default function ProjectPage() {
 
   // Scroll to top when component mounts or id changes
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0})
   }, [id])
 
   const project = useMemo(() => projects.find((p) => p.id === id), [id])
