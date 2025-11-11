@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export default function Navbar() {
     const { effective, toggle } = useTheme();
     const [mobileOpen, setMobileOpen] = useState(false);
-    const firstMobileLinkRef = useRef<HTMLAnchorElement | null>(null);
+    const firstMobileLinkRef = useRef<HTMLLIElement | null>(null);
     const menuRef = useRef<HTMLDivElement | null>(null);
     const prevBodyOverflowRef = useRef<string>('');
 
@@ -119,9 +119,9 @@ export default function Navbar() {
                 <nav>
                     {/* Desktop nav - visible from md and up */}
                     <ul className="hidden md:flex gap-30 font-title text-lg">
-                        <li><Link to="/about" className="hover:underline">Sobre</Link></li>
-                        <li><Link to="/projetos" className="hover:underline">Projetos</Link></li>
-                        <li><Link to="/contact" className="hover:underline">Contato</Link></li>
+                        <li><Link to="/#sobre" className="hover:underline">Sobre</Link></li>
+                        <li><Link to="/#projetos" className="hover:underline">Projetos</Link></li>
+                        <li><Link to="/#contato" className="hover:underline">Contato</Link></li>
                     </ul>
                 </nav>
 
@@ -184,19 +184,18 @@ export default function Navbar() {
                                 aria-label="Menu móvel"
                             >
                                 <ul className="flex flex-col gap-0 p-2 font-title text-base">
-                                    <li>
+                                    <li ref={firstMobileLinkRef}>
                                         <Link
-                                            to="/about"
+                                            to="/#sobre"
                                             className="block w-full px-4 py-3 rounded hover:bg-primary/5 focus:bg-primary/5 focus:outline-none"
                                             onClick={() => handleMobileToggle(false)}
-                                            ref={firstMobileLinkRef}
                                         >
                                             Sobre
                                         </Link>
                                     </li>
                                     <li>
                                         <Link
-                                            to="/projetos"
+                                            to="/#projetos"
                                             className="block w-full px-4 py-3 rounded hover:bg-primary/5 focus:bg-primary/5 focus:outline-none"
                                             onClick={() => handleMobileToggle(false)}
                                         >
@@ -205,7 +204,7 @@ export default function Navbar() {
                                     </li>
                                     <li>
                                         <Link
-                                            to="/contact"
+                                            to="/#contato"
                                             className="block w-full px-4 py-3 rounded hover:bg-primary/5 focus:bg-primary/5 focus:outline-none"
                                             onClick={() => handleMobileToggle(false)}
                                         >
