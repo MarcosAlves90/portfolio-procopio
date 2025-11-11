@@ -58,7 +58,7 @@ export default function ProjectPage() {
             {/* Renderiza a descrição em parágrafos e listas (não altera aparência) */}
             <ProjectDescription description={project.description ?? undefined} />
           </div>
-          <ColorPalette colors={project.content?.['Paleta de cores'] as string[] | undefined} />
+          <ColorPalette colors={project.content?.palette as string[] | undefined} />
         </div>
       </div>
     </main>
