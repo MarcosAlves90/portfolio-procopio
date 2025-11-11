@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import projects from '@/data/projects'
 import ProjectDescription from '@/components/molecule/ProjectDescription'
@@ -7,6 +7,11 @@ import ProjectHeader from '@/components/organism/ProjectHeader'
 
 export default function ProjectPage() {
   const { id } = useParams<{ id?: string }>()
+
+  // Scroll to top when component mounts or id changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [id])
 
   const project = useMemo(() => projects.find((p) => p.id === id), [id])
 
