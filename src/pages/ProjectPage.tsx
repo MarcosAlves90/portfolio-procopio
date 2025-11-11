@@ -34,24 +34,24 @@ export default function ProjectPage() {
     <main className="max-w-400 mx-auto p-5 mt-16 text-primary space-y-4">
       <ProjectHeader projectId={project.id} prevProject={prevProject} nextProject={nextProject} />
 
-      <div className="flex items-stretch justify-center space-x-4">
+      <div className="flex items-stretch justify-center max-lg:space-y-4 lg:space-x-4 max-lg:flex-col">
         {typeof project.src === 'string' ? (
           <img
             src={project.src}
             alt={altText}
-            className="w-full h-auto object-contain max-w-180"
+            className="w-full h-auto object-contain lg:max-w-180"
             loading="lazy"
             decoding="async"
           />
         ) : (
-          <div role="img" aria-label={altText} className="p-6 max-w-180 w-full bg-foreground rounded-xl">
+          <div role="img" aria-label={altText} className="p-6 lg:max-w-180 w-full bg-foreground rounded-xl">
             {project.src}
           </div>
         )}
 
         <div className='space-y-4 flex items-stretch flex-col'>
-          <div className="bg-foreground rounded-xl p-4 sm:p-6 space-y-3">
-            <h2 id="about-heading" className="font-title text-2xl sm:text-3xl">
+          <div className="bg-foreground rounded-xl p-4 xl:p-6 space-y-3">
+            <h2 id="about-heading" className="font-title text-2xl xl:text-3xl">
               {project.title}
             </h2>
 
