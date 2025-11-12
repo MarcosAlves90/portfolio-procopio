@@ -8,11 +8,13 @@ function App() {
   return (
     <>
       <HashNavigator />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projetos/:id" element={<ProjectPage />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projetos/:id" element={<ProjectPage />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </main>
     </>
   );
 }
