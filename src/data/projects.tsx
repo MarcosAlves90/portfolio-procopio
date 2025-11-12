@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import LogoMl from "@/components/atom/LogoMl";
-import { buildCloudinaryUrl } from "@/utils/cloudinary";
+import { getResponsiveImageUrls } from "@/utils/cloudinary";
 
 export interface ProjectItem {
   id: string;
@@ -9,12 +9,20 @@ export interface ProjectItem {
   title?: string;
   description?: string;
   content?: Record<string, string | string[]>;
+  srcSet?: string;
+  placeholderSrc?: string;
+  sizes?: string;
 }
+
+const posterRetrato = getResponsiveImageUrls({
+  publicId: "Poster_retrato-Final_mcjdza.jpg",
+  size: "large",
+});
 
 export const projects: ProjectItem[] = [
   {
     id: "1",
-    src: buildCloudinaryUrl("Poster_retrato-Final_mcjdza.jpg"),
+    ...posterRetrato,
     alt: "Pôster do filme Baby Driver",
     title: "Pôster Em Ritmo de Fuga",
     description:
@@ -41,7 +49,10 @@ export const projects: ProjectItem[] = [
   },
   {
     id: "3",
-    src: buildCloudinaryUrl("Poster_Porsche_Final_r4l5wc.jpg"),
+    ...getResponsiveImageUrls({
+      publicId: "Poster_Porsche_Final_r4l5wc.jpg",
+      size: "large",
+    }),
     alt: "Pôster do carro Porsche 911 GT3",
     title: "Pôster Porsche 911 GT3",
     description:
@@ -55,7 +66,10 @@ export const projects: ProjectItem[] = [
   },
   {
     id: "4",
-    src: buildCloudinaryUrl("Hazard-t5-1_p1ozw2.png"),
+    ...getResponsiveImageUrls({
+      publicId: "Hazard-t5-1_p1ozw2.png",
+      size: "large",
+    }),
     alt: "Pôster do RPG Hazard: Mundo Titânico",
     title: "Pôster Hazard Mundo Titânico",
     description:
