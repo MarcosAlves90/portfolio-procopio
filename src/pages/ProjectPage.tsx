@@ -56,8 +56,12 @@ export default function ProjectPage() {
         {typeof project.src === "string" ? (
           <CachedImage
             src={project.src}
+            srcSet={project.srcSet}
+            placeholderSrc={project.placeholderSrc}
+            sizes={project.sizes}
             alt={altText}
-            className="w-full h-auto object-contain lg:max-w-180"
+            objectFit="contain"
+            containerClassName="lg:max-w-180"
           />
         ) : (
           <div

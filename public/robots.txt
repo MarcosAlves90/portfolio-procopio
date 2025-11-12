@@ -1,0 +1,30 @@
+# robots.txt para portfolio-procopio
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://portcopio.vercel.app/sitemap.xml
+
+# Permitir crawling de todas as páginas principais
+Allow: /
+Allow: /projetos/
+Allow: /projetos/*
+
+# Bloquear arquivos técnicos se necessário
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# Permitir indexação de recursos estáticos importantes
+Allow: /assets/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.webp
+Allow: /*.svg
+
+# Crawl-delay (opcional, remover se não necessário)
+# Crawl-delay: 1

@@ -137,14 +137,22 @@ export async function fetchImageWithCache(url: string): Promise<Blob> {
       return cached;
     }
 
-    // Fetch from network
-    const response = await fetch(url);
+    // Fetch from network with compression hints
+    const response = await fetch(url, {
+      headers: {
+        'Accept': 'image/webp,image/avif,image/apng,image/*,*/*;q=0.8',
+        'Cache-Control': 'max-age=31536000',
+      },
+    });
+    
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const blob = await response.blob();
 
-    // Cache the blob
-    await imageCacheManager.set(url, blob);
+    // Only cache if blob size is reasonable (< 10MB)
+    if (blob.size < 10 * 1024 * 1024) {
+      await imageCacheManager.set(url, blob);
+    }
 
     return blob;
   } catch (error) {
