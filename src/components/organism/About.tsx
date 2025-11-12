@@ -1,5 +1,36 @@
-import { buildCloudinaryUrl } from "@/utils/cloudinary";
+import { getResponsiveImageUrls } from "@/utils/cloudinary";
 import CachedImage from "@/components/atom/CachedImage";
+
+const profileImage = getResponsiveImageUrls(
+  {
+    publicId: "Copio_kphmvi.jpg",
+    size: "medium",
+    transformations: {
+      c: "crop",
+      x: "0",
+      y: "75",
+      w: "800",
+      h: "500",
+    },
+  },
+  "(max-width: 768px) 100vw, 25vw",
+);
+
+const notebookImage = getResponsiveImageUrls(
+  {
+    publicId: "Card_notebook_y0zksg.png",
+    size: "medium",
+  },
+  "(max-width: 1024px) 100vw, 50vw",
+);
+
+const stickerImage = getResponsiveImageUrls(
+  {
+    publicId: "Card_adesivo_fl7jei.png",
+    size: "medium",
+  },
+  "(max-width: 1024px) 100vw, 33vw",
+);
 
 export default function About() {
   return (
@@ -26,15 +57,9 @@ export default function About() {
         </div>
         <figure className="w-full h-full overflow-hidden rounded-xl col-span-2">
           <CachedImage
-            src={buildCloudinaryUrl("Copio_kphmvi.jpg", {
-              c: "crop",
-              x: "0",
-              y: "75",
-              w: "800",
-              h: "500",
-            })}
+            {...profileImage}
             alt="Retrato de Procópio sorrindo"
-            className="w-full h-full object-cover"
+            containerClassName="w-full h-full"
           />
           <figcaption className="sr-only">Foto de Procópio</figcaption>
         </figure>
@@ -43,9 +68,9 @@ export default function About() {
       <div className="flex max-lg:items-center max-lg:justify-center flex-col-reverse lg:grid grid-cols-8 gap-4">
         <figure className="w-full h-full overflow-hidden rounded-xl col-span-4">
           <CachedImage
-            src={buildCloudinaryUrl("Card_notebook_y0zksg.png")}
+            {...notebookImage}
             alt="Exemplo de projeto do portfólio"
-            className="w-full h-full object-cover"
+            containerClassName="w-full h-full"
           />
           <figcaption className="sr-only">
             Imagem ilustrativa de projetos
@@ -120,9 +145,9 @@ export default function About() {
 
         <figure className="w-full h-full overflow-hidden rounded-xl col-span-3 bg-foreground">
           <CachedImage
-            src={buildCloudinaryUrl("Card_adesivo_fl7jei.png")}
+            {...stickerImage}
             alt="Amostra de adesivos e artes"
-            className="w-full h-full object-cover"
+            containerClassName="w-full h-full"
           />
           <figcaption className="sr-only">
             Amostra de adesivos criados
