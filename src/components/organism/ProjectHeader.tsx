@@ -16,7 +16,7 @@ export default function ProjectHeader({
     <div className="rounded-xl bg-foreground p-3 flex items-center justify-between">
       <div className="flex items-center space-x-3">
         <Link
-          to="/projetos"
+          to="/"
           aria-label="Ir para projetos"
           className="p-2 rounded-md hover:bg-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary"
         >
